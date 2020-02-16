@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         智联内部在线学习平台视频辅助V2
 // @namespace    http://tampermonkey.net/
-// @version      2.1
+// @version      3
 // @description  try to take over the world!
 // @author       RoRochen
 // @match        https://xuexi.zhaopin.com/*
