@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         智联内部在线学习平台视频辅助V2
+// @name         智联内部在线学习平台视频辅助V3
 // @namespace    http://tampermonkey.net/
 // @version      3
 // @description  try to take over the world!
