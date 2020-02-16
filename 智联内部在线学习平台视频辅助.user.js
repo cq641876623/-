@@ -37,7 +37,7 @@ head.appendChild(style);
                    +'<div v-for="chapter in stage.chapterList" class="suojin  el-card box-card is-always-shadow" style="padding:10px;">章节：'
                    +'<div>{{chapter["chapterName"]}}</div>'
                    +'<div class="suojin" v-for="video in chapter.videoList">'
-                   +'<div style="display: flex;justify-content: space-between;"><div><i class="el-icon-video-camera-solid" style="font-size: 20px;"></i>{{video["title"]}}</div><el-button size="mini" round v-on:click="viewVideo(video.itemId,video.length,video.title)" type="primary">看完</el-button></div>'
+                   +'<div style="display: flex;justify-content: space-between;"><div><i class="el-icon-video-camera-solid" style="font-size: 20px;"></i>{{video["title"]}}</div><el-button size="mini" round v-on:click="viewVideo(video.itemId,video.length,video.title)" type="primary">检查</el-button></div>'
                    +'</div>'
                    +'</div>'
                    +'</div>'
@@ -63,7 +63,7 @@ head.appendChild(style);
                                        vueobj.page=temp;
                                          vueobj.$notify({
                                              title: '成功',
-                                             message: title+"   一键看完，"+result.msg,
+                                             message: title+"   执行检查操作，"+result.msg,
                                              type: 'success'
                                          });
                                     }
