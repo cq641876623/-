@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6aa702f1-a04d-4232-b8ea-ade5c3d9924e" name="Default Changelist" comment="添加项目描述">
+    <list default="true" id="6aa702f1-a04d-4232-b8ea-ade5c3d9924e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/智联内部在线学习平台视频辅助.user.js" beforeDir="false" afterPath="$PROJECT_DIR$/智联内部在线学习平台视频辅助.user.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +52,7 @@
       <updated>1581832145546</updated>
       <workItem from="1581832147338" duration="108000" />
       <workItem from="1581832371727" duration="1897000" />
-      <workItem from="1581906864327" duration="548000" />
+      <workItem from="1581906864327" duration="802000" />
     </task>
     <task id="LOCAL-00001" summary="添加项目描述">
       <created>1581907152333</created>
@@ -74,11 +75,28 @@
       <option name="project" value="LOCAL" />
       <updated>1581907323644</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="添加项目描述">
+      <created>1581907548848</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1581907548848</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -98,13 +116,13 @@
     <option name="LAST_COMMIT_MESSAGE" value="添加项目描述" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="572" y="118" key="CommitChangelistDialog2" timestamp="1581907509143">
+    <state x="572" y="118" key="CommitChangelistDialog2" timestamp="1581907669263">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="572" y="118" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1581907509143" />
-    <state x="754" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1581907267675">
+    <state x="572" y="118" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1581907669263" />
+    <state x="754" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1581907699395">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="754" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1581907267675" />
+    <state x="754" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1581907699395" />
   </component>
 </project>

@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         智联内部在线学习平台学习进度检查器
 // @namespace    http://tampermonkey.net/
-// @version      3.6
+// @version      3.5
 // @description  一键即可检查视频进度是否完成
 // @author       RoRochen
 // @match        https://xuexi.zhaopin.com/*
