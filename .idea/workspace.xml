@@ -16,8 +16,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/智联内部在线学习平台视频辅助.user.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="84" column="66" selection-start-line="84" selection-start-column="60" selection-end-line="84" selection-end-column="66" />
+            <state relative-caret-position="524">
+              <caret line="155" column="41" selection-start-line="155" selection-start-column="28" selection-end-line="155" selection-end-column="41" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
@@ -28,6 +28,8 @@
                 <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#i#0;n#div#0;n#div#0;n#div#1;n#div#1;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
+                <element signature="e#6153#6604#0" />
+                <element signature="e#7706#9009#0" />
               </folding>
             </state>
           </provider>
@@ -39,6 +41,8 @@
     <findStrings>
       <find>box</find>
       <find>gradeId</find>
+      <find>stageRateDetailList</find>
+      <find>dealStageList</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -131,7 +135,7 @@
       <workItem from="1581832147338" duration="108000" />
       <workItem from="1581832371727" duration="1897000" />
       <workItem from="1581906864327" duration="802000" />
-      <workItem from="1585011609830" duration="1060000" />
+      <workItem from="1585011609830" duration="2125000" />
     </task>
     <task id="LOCAL-00001" summary="添加项目描述">
       <created>1581907152333</created>
@@ -165,7 +169,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1060000" />
+    <option name="totallyTimeSpent" value="2125000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -264,8 +268,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/智联内部在线学习平台视频辅助.user.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="84" column="66" selection-start-line="84" selection-start-column="60" selection-end-line="84" selection-end-column="66" />
+        <state relative-caret-position="524">
+          <caret line="155" column="41" selection-start-line="155" selection-start-column="28" selection-end-line="155" selection-end-column="41" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
@@ -276,6 +280,8 @@
             <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#!!top" expanded="true" />
             <element signature="n#style#0;n#i#0;n#div#0;n#div#0;n#div#1;n#div#1;n#!!top" expanded="true" />
             <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
+            <element signature="e#6153#6604#0" />
+            <element signature="e#7706#9009#0" />
           </folding>
         </state>
       </provider>

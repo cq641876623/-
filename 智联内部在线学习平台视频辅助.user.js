@@ -30,7 +30,7 @@ head.appendChild(style);
 
     var Page_Size=10;
     var ass_Panel_Status=false;
-    var assPanel=$('<div id="app" style="position:fixed;right:0;bottom:0;width:600px; padding: 10px;display: none; max-height: 600px;overflow-y: scroll;background: #407ef4;box-shadow: 2px 0 5px 0 rgba(0,21,41,.35);"><div style="display: flex;justify-content: space-between;color:#fff"><div>第<el-input-number size="mini" v-model="page"></el-input-number>页</div><el-select v-model="gradeId" placeholder="请选择课程" size="small"><el-option v-for="item in gradeList" :key="item.gradeId" :label="item.name" :value="item.gradeId"> </el-option> </el-select><div >智联辅助V2</div></div>'
+    var assPanel=$('<div id="app" style="position:fixed;right:0;bottom:0;width:600px; padding: 10px;display: none; max-height: 600px;overflow-y: scroll;background: #407ef4;box-shadow: 2px 0 5px 0 rgba(0,21,41,.35);"><div style="display: flex;justify-content: space-between;color:#fff"><div>第<el-input-number size="mini" v-model="page"></el-input-number>页</div><el-select v-model="gradeId" placeholder="请选择课程" size="small"><el-option v-for="item in gradeList" :key="item.gradeId" :label="item.name" :value="item.gradeId"> </el-option> </el-select><div >智联辅助V3</div></div>'
                    +'<div v-for=" stage in list" class="stage" >'
                    +'<div>'
                    +'<div style="display:flex;justify-content: space-between;" ><div>阶段:{{stage["stageName"]}}</div><el-progress  :percentage="stage.stageRate*100" style="width:150px;" :color="customColorMethod"></el-progress></div>'
@@ -114,7 +114,9 @@ head.appendChild(style);
         return "";
     }
 
-     $.ajax({
+    var waitLogin=setInterval(getGradeList,1000)
+    function getGradeList(){
+        $.ajax({
             url:"https://rest-xuexi.zhaopin.com/common/grade/box",
             type:"GET",
             headers:{'Authorization':getCookie("oxtoken")},
@@ -123,11 +125,21 @@ head.appendChild(style);
             contentType:"application/json",
             success:function(result){
                 console.log("智联脚本",result)
-                vueobj.gradeList=result.data;
-                vueobj.gradeId=result.data[0].gradeId;
+                var isLogin=false;
+                try{
+                    vueobj.gradeList=result.data;
+                    vueobj.gradeId=result.data[0].gradeId;
+                    isLogin=true;
+                }catch (e) {
+                    console.log("还未登录");
+                }
+                if(waitLogin){clearInterval(waitLogin);console.log("登录成功")}
+
 
             }
-     });
+        });
+    }
+
 
     function getVideoList(gradeId,page,size){
            var data={p:page,s:size,gradeId:gradeId,courseName:""}
