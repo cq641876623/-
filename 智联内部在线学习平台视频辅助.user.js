@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         智联内部在线学习平台学习进度检查器
 // @namespace    http://tampermonkey.net/
-// @version      3.5
+// @version      3.6
 // @description  一键即可检查视频进度是否完成
 // @author       RoRochen
 // @match        https://xuexi.zhaopin.com/*
@@ -30,7 +30,7 @@ head.appendChild(style);
 
     var Page_Size=10;
     var ass_Panel_Status=false;
-    var assPanel=$('<div id="app" style="position:fixed;right:0;bottom:0;width:600px; padding: 10px;display: none; max-height: 600px;overflow-y: scroll;background: #407ef4;box-shadow: 2px 0 5px 0 rgba(0,21,41,.35);"><div style="display: flex;justify-content: space-between;color:#fff"><div>第<el-input-number size="mini" v-model="page"></el-input-number>页</div><div >智联辅助V2</div></div>'
+    var assPanel=$('<div id="app" style="position:fixed;right:0;bottom:0;width:600px; padding: 10px;display: none; max-height: 600px;overflow-y: scroll;background: #407ef4;box-shadow: 2px 0 5px 0 rgba(0,21,41,.35);"><div style="display: flex;justify-content: space-between;color:#fff"><div>第<el-input-number size="mini" v-model="page"></el-input-number>页</div><el-select v-model="gradeId" placeholder="请选择"><el-option v-for="item in gradeList" :key="item.gradeId" :label="item.name" :value="item.gradeId"> </el-option> </el-select><div >智联辅助V2</div></div>'
                    +'<div v-for=" stage in list" class="stage" >'
                    +'<div>'
                    +'<div style="display:flex;justify-content: space-between;" ><div>阶段:{{stage["stageName"]}}</div><el-progress  :percentage="stage.stageRate*100" style="width:150px;" :color="customColorMethod"></el-progress></div>'
@@ -46,7 +46,7 @@ head.appendChild(style);
     $('body').append(assbtn)
     $('body').append(assPanel)
     var vueobj=new Vue({el:'#app',data(){
-        return {page:1,list:[{stageId:'',stageName:'',stageRate:'',chapterList:[{chapterId:'',chapterName:'',videoList:[{itemId:'',title:'',length:''}]}]}]}
+        return {page:1,gradeList:[],gradeId:-1,list:[{stageId:'',stageName:'',stageRate:'',chapterList:[{chapterId:'',chapterName:'',videoList:[{itemId:'',title:'',length:''}]}]}]}
                                         },
                         methods: {
                             viewVideo(itemId,length,title){
@@ -110,7 +110,7 @@ head.appendChild(style);
         }
         return "";
     }
-    var gradeId=-1;
+
      $.ajax({
             url:"https://rest-xuexi.zhaopin.com/common/grade/box",
             type:"GET",
@@ -120,7 +120,8 @@ head.appendChild(style);
             contentType:"application/json",
             success:function(result){
                 console.log("智联脚本",result)
-                gradeId=result.data[0].gradeId;
+                vueobj.gradeList=result.data;
+                vueobj.gradeId=result.data[0].gradeId;
 
             }
      });
@@ -142,14 +143,14 @@ head.appendChild(style);
 
      });
     }
-    getVideoList(gradeId,vueobj.page,Page_Size)
+    getVideoList(vueobj.gradeId,vueobj.page,Page_Size)
     function dealStageList(data){
        var result=[];
        data.data.stageRateDetailList.list.forEach(function(item){
            var i={stageId:item.stageId,stageName:item.stageName,stageRate:item.stageRate.toFixed(2),chapterList:[]};
            item.stageChapterDetailList.forEach(function(item2){
               var chapterItem={chapterId:item2.chapterId,chapterName:item2.chapterName,videoList:[]}
-              var reqData={gradeId: gradeId, stageId: item.stageId, chapterId: item2.chapterId}  ;
+              var reqData={gradeId: vueobj.gradeId, stageId: item.stageId, chapterId: item2.chapterId}  ;
                $.ajax({
                    url:"https://rest-xuexi.zhaopin.com/video/list",
                    type:"POST",
