@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         智联内部在线学习平台学习进度检查器
 // @namespace    http://tampermonkey.net/
-// @version      3.6
-// @description  一键即可检查视频进度是否完成
+// @version      3.7
+// @description  一键即可检查视频进度是否完成，3.7更新课程分类，修复bug等
 // @author       RoRochen
 // @match        https://xuexi.zhaopin.com/*
 // @supportURL   641876223@qq.com
@@ -30,7 +30,7 @@ head.appendChild(style);
 
     var Page_Size=10;
     var ass_Panel_Status=false;
-    var assPanel=$('<div id="app" style="position:fixed;right:0;bottom:0;width:600px; padding: 10px;display: none; max-height: 600px;overflow-y: scroll;background: #407ef4;box-shadow: 2px 0 5px 0 rgba(0,21,41,.35);"><div style="display: flex;justify-content: space-between;color:#fff"><div>第<el-input-number size="mini" v-model="page"></el-input-number>页</div><el-select v-model="gradeId" placeholder="请选择"><el-option v-for="item in gradeList" :key="item.gradeId" :label="item.name" :value="item.gradeId"> </el-option> </el-select><div >智联辅助V2</div></div>'
+    var assPanel=$('<div id="app" style="position:fixed;right:0;bottom:0;width:600px; padding: 10px;display: none; max-height: 600px;overflow-y: scroll;background: #407ef4;box-shadow: 2px 0 5px 0 rgba(0,21,41,.35);"><div style="display: flex;justify-content: space-between;color:#fff"><div>第<el-input-number size="mini" v-model="page"></el-input-number>页</div><el-select v-model="gradeId" placeholder="请选择课程" size="small"><el-option v-for="item in gradeList" :key="item.gradeId" :label="item.name" :value="item.gradeId"> </el-option> </el-select><div >智联辅助V2</div></div>'
                    +'<div v-for=" stage in list" class="stage" >'
                    +'<div>'
                    +'<div style="display:flex;justify-content: space-between;" ><div>阶段:{{stage["stageName"]}}</div><el-progress  :percentage="stage.stageRate*100" style="width:150px;" :color="customColorMethod"></el-progress></div>'
@@ -82,7 +82,10 @@ head.appendChild(style);
                         },
                         watch:{
                             page:function(){
-                                getVideoList(gradeId,vueobj.page,Page_Size)
+                                getVideoList(vueobj.gradeId,vueobj.page,Page_Size)
+                            },
+                            gradeId:function () {
+                                getVideoList(vueobj.gradeId,vueobj.page,Page_Size)
                             }
                         }
                        })

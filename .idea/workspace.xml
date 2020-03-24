@@ -16,8 +16,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/智联内部在线学习平台视频辅助.user.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
-              <caret line="21" column="24" lean-forward="true" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
+            <state relative-caret-position="342">
+              <caret line="84" column="66" selection-start-line="84" selection-start-column="60" selection-end-line="84" selection-end-column="66" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
@@ -131,7 +131,7 @@
       <workItem from="1581832147338" duration="108000" />
       <workItem from="1581832371727" duration="1897000" />
       <workItem from="1581906864327" duration="802000" />
-      <workItem from="1585011609830" duration="768000" />
+      <workItem from="1585011609830" duration="1060000" />
     </task>
     <task id="LOCAL-00001" summary="添加项目描述">
       <created>1581907152333</created>
@@ -165,7 +165,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="768000" />
+    <option name="totallyTimeSpent" value="1060000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -264,8 +264,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/智联内部在线学习平台视频辅助.user.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="21" column="24" lean-forward="true" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
+        <state relative-caret-position="342">
+          <caret line="84" column="66" selection-start-line="84" selection-start-column="60" selection-end-line="84" selection-end-column="66" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
