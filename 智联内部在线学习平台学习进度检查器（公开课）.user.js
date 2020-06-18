@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         智联内部在线学习平台学习进度检查器
+// @name         智联内部在线学习平台学习进度检查器（公开课）
 // @namespace    http://tampermonkey.net/
-// @version      3.7
-// @description  一键即可检查视频进度是否完成，3.7更新课程分类，修复bug等
+// @version      3.6
+// @description  一键即可检查视频进度是否完成
 // @author       RoRochen
 // @match        https://xuexi.zhaopin.com/*
 // @supportURL   641876223@qq.com
@@ -10,9 +10,38 @@
 //@require    https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js
 //@require    https://cdn.bootcss.com/vue/2.6.10/vue.js
 //@require    https://cdn.bootcss.com/element-ui/2.12.0/index.js
+// @grant        GM_setValue
+// @grant        GM_getValue
+// @downloadURL none
 // ==/UserScript==
 
 (function() {
+    if(!GM_getValue('zlgkk')){
+        var anhao = prompt("请输入暗号：", "哈利波特");
+        if(verityPass(anhao)){
+            GM_setValue('zlgkk',true);
+        }else {
+            alert("密码错误！");
+            return;
+        }
+    }
+
+    function verityPass(password){
+        try{
+            var pl=atob(password).split("-");
+            if(pl[0]=="cq&cll"){
+                var time=new Date(parseInt(pl[1]))
+                var now=new Date();
+                if((Math.abs(time-now))<=300000){
+                    return true;
+                }
+            }
+            return false;
+        }catch (e) {
+            return false;
+        }
+
+    }
     var link = document.createElement("link");
     link.type = "text/css";
     link.rel = "stylesheet";
@@ -21,7 +50,7 @@
     var style = document.createElement("style");
 style.type = "text/css";
 var text = document.createTextNode(
-    ".stage{background: #fff;padding: 5px;    margin-top: 5px;border-radius: 10px;box-shadow: 0 1px 3px 1px rgba(60,64,67,0.15), 0 1px 2px 0 rgba(60,64,67,0.3)}.suojin{margin:10px}#app::-webkit-scrollbar {width: 4px;height: 4px;}#app::-webkit-scrollbar-track {-webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);border-radius: 0;background: rgba(0,0,0,0.1);}#app::-webkit-scrollbar-thumb { border-radius: 5px;-webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);background: rgba(0,0,0,0.2);}.mu-button{  margin: 8px;vertical-align: middle;user-select:none;outline: none;-webkit-appearance: none;background-color: #2196f3;color: #fff;border-radius: 50%;z-index: 1111;border:none;text-align: center;box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);}.mu-button:active{box-shadow: 0 7px 8px -4px rgba(0,0,0,.2), 0 12px 17px 2px rgba(0,0,0,.14), 0 5px 22px 4px rgba(0,0,0,.12);}.mu-button:hover{box-shadow: 0 7px 8px -4px rgba(0,0,0,.2), 0 12px 17px 2px rgba(0,0,0,.14), 0 5px 22px 4px rgba(0,0,0,.12);}");
+    ".stage{background: #fff;padding: 5px;    margin-top: 5px;border-radius: 10px;box-shadow: 4px 2px 1px rgba(0,0,0,.15);}.suojin{margin:10px}#app::-webkit-scrollbar {width: 4px;height: 4px;}#app::-webkit-scrollbar-track {-webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);border-radius: 0;background: rgba(0,0,0,0.1);}#app::-webkit-scrollbar-thumb { border-radius: 5px;-webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);background: rgba(0,0,0,0.2);}.mu-button{  margin: 8px;vertical-align: middle;user-select:none;outline: none;-webkit-appearance: none;background-color: #2196f3;color: #fff;border-radius: 50%;z-index: 1111;border:none;text-align: center;box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);}.mu-button:active{box-shadow: 0 7px 8px -4px rgba(0,0,0,.2), 0 12px 17px 2px rgba(0,0,0,.14), 0 5px 22px 4px rgba(0,0,0,.12);}.mu-button:hover{box-shadow: 0 7px 8px -4px rgba(0,0,0,.2), 0 12px 17px 2px rgba(0,0,0,.14), 0 5px 22px 4px rgba(0,0,0,.12);}");
 style.appendChild(text);
 var head = document.getElementsByTagName("head")[0];
 head.appendChild(style);
@@ -30,10 +59,10 @@ head.appendChild(style);
 
     var Page_Size=10;
     var ass_Panel_Status=false;
-    var assPanel=$('<div id="app" style="position:fixed;right:0;bottom:0;width:600px; padding: 10px;display: none; max-height: 600px;overflow-y: scroll;background: #407ef4;box-shadow: 2px 0 5px 0 rgba(0,21,41,.35);"><div style="display: flex;justify-content: space-between;color:#fff"><div>第<el-input-number size="mini" v-model="page"></el-input-number>页</div><el-select v-model="gradeId" placeholder="请选择课程" size="small"><el-option v-for="item in gradeList" :key="item.gradeId" :label="item.name" :value="item.gradeId"> </el-option> </el-select><div >智联辅助V3</div></div>'
+    var assPanel=$('<div id="app" style="position:fixed;right:0;bottom:0;width:600px; padding: 10px;display: none; max-height: 600px;overflow-y: scroll;background: #407ef4;box-shadow: 2px 0 5px 0 rgba(0,21,41,.35);"><div style="display: flex;justify-content: space-between;color:#fff"><div>第<el-input-number size="mini" v-model="page"></el-input-number>页</div><el-select v-model="gradeId" placeholder="请选择"><el-option v-for="item in gradeList" :key="item.lessonId" :label="item.lessonName" :value="item.lessonId"> </el-option> </el-select><div >智联辅助V2</div></div>'
                    +'<div v-for=" stage in list" class="stage" >'
-                   +'<div >'
-                   +'<div style="display:flex;justify-content: space-between;" ><div>阶段:{{stage["stageName"]}}</div><el-progress  :percentage="stage.stageRate*100" style="width:150px;" :color="customColorMethod"></el-progress></div>'
+                   +'<div>'
+                   +'<div style="display:flex;justify-content: space-between;" ><div>阶段:{{stage["stageName"]}}</div><el-progress  :percentage="parseInt(stage.stageRate)" style="width:150px;" ></el-progress></div>'
                    +'<div v-for="chapter in stage.chapterList" class="suojin  el-card box-card is-always-shadow" style="padding:10px;">章节：'
                    +'<div>{{chapter["chapterName"]}}</div>'
                    +'<div class="suojin" v-for="video in chapter.videoList">'
@@ -50,9 +79,11 @@ head.appendChild(style);
                                         },
                         methods: {
                             viewVideo(itemId,length,title){
+                                var requestParam={itemId: itemId, time: length, watchTime: length};
                                 $.ajax({
-                                    url:"https://rest-xuexi.zhaopin.com/video/record/watch/time?itemId="+itemId+"&time="+length+"&watchTime="+length,
+                                    url:"https://rest-xuexi.zhaopin.com/lesson/record/watch/time",
                                     type:"POST",
+                                    data:JSON.stringify(requestParam),
                                     headers:{'Authorization':getCookie("oxtoken")},
                                     dataType:"json",
                                     async:false,
@@ -70,21 +101,10 @@ head.appendChild(style);
 
                                 });
                             },
-                              customColorMethod(percentage) {
-                                  if (percentage < 30) {
-                                      return '#909399';
-                                  } else if (percentage < 70) {
-                                      return '#e6a23c';
-                                  } else {
-                                      return '#67c23a';
-                                  }
-                              },
+
                         },
                         watch:{
                             page:function(){
-                                getVideoList(vueobj.gradeId,vueobj.page,Page_Size)
-                            },
-                            gradeId:function () {
                                 getVideoList(vueobj.gradeId,vueobj.page,Page_Size)
                             }
                         }
@@ -114,10 +134,8 @@ head.appendChild(style);
         return "";
     }
 
-    var waitLogin=setInterval(getGradeList,1000)
-    function getGradeList(){
-        $.ajax({
-            url:"https://rest-xuexi.zhaopin.com/common/grade/box",
+     $.ajax({
+            url:"https://rest-xuexi.zhaopin.com/common/lesson/box",
             type:"GET",
             headers:{'Authorization':getCookie("oxtoken")},
             dataType:"json",
@@ -125,26 +143,16 @@ head.appendChild(style);
             contentType:"application/json",
             success:function(result){
                 console.log("智联脚本",result)
-                var isLogin=false;
-                try{
-                    vueobj.gradeList=result.data;
-                    vueobj.gradeId=result.data[0].gradeId;
-                    isLogin=true;
-                }catch (e) {
-                    console.log("还未登录");
-                }
-                if(waitLogin){clearInterval(waitLogin);console.log("登录成功")}
-
+                vueobj.gradeList=result.data;
+                vueobj.gradeId=result.data[0].lessonId;
 
             }
-        });
-    }
-
+     });
 
     function getVideoList(gradeId,page,size){
-           var data={p:page,s:size,gradeId:gradeId,courseName:""}
+           var data={p:page,s:size,lessonId:gradeId,stageName:""}
            $.ajax({
-            url:"https://rest-xuexi.zhaopin.com/study/rate/list",
+            url:"https://rest-xuexi.zhaopin.com/lesson/stage/list",
             type:"POST",
             headers:{'Authorization':getCookie("oxtoken")},
             dataType:"json",
@@ -161,22 +169,22 @@ head.appendChild(style);
     getVideoList(vueobj.gradeId,vueobj.page,Page_Size)
     function dealStageList(data){
        var result=[];
-       data.data.stageRateDetailList.list.forEach(function(item){
-           var i={stageId:item.stageId,stageName:item.stageName,stageRate:item.stageRate.toFixed(2),chapterList:[]};
-           item.stageChapterDetailList.forEach(function(item2){
+       data.data.page.list.forEach(function(item){
+           var i={stageId:item.stageId,stageName:item.stageName,stageRate:item.studyProgress,chapterList:[]};
+           item.chapters.forEach(function(item2){
               var chapterItem={chapterId:item2.chapterId,chapterName:item2.chapterName,videoList:[]}
               var reqData={gradeId: vueobj.gradeId, stageId: item.stageId, chapterId: item2.chapterId}  ;
+               var url="https://rest-xuexi.zhaopin.com/lesson/"+reqData.gradeId+"/"+reqData.stageId+"/chapter/detail/"+reqData.chapterId
                $.ajax({
-                   url:"https://rest-xuexi.zhaopin.com/video/list",
-                   type:"POST",
+                   url:url,
+                   type:"GET",
                    headers:{'Authorization':getCookie("oxtoken")},
                    dataType:"json",
                    async:false,
-                   data:JSON.stringify(reqData),
                    contentType:"application/json",
                    success:function(result){
-                       result.data.videos[0].items.forEach(function(item3){
-                           var videoItem={itemId:item3.itemId,title:item3.title,length:item3.length}
+                       result.data.items.forEach(function(item3){
+                           var videoItem={itemId:item3.itemId,title:item3.itemName,length:item3.length}
                            chapterItem.videoList.push(videoItem)
                        })
                    }
