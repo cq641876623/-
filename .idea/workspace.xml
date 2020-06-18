@@ -2,13 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6aa702f1-a04d-4232-b8ea-ade5c3d9924e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Sercet.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/智联内部在线学习平台视频辅助.user.js" beforeDir="false" afterPath="$PROJECT_DIR$/智联内部在线学习平台视频辅助.user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/智联内部在线学习平台学习进度检查器（公开课）.user.js" beforeDir="false" afterPath="$PROJECT_DIR$/智联内部在线学习平台学习进度检查器（公开课）.user.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
   </component>
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
@@ -26,6 +30,9 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
   <component name="ProjectId" id="1XsQ6O2II49Gd1vm2dkZwmc5AWd" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -40,6 +47,11 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="Settings.JavaScript" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\ideaproject\gitproject\zhilianfuzhu" />
+    </key>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -57,6 +69,7 @@
       <workItem from="1581922151003" duration="74000" />
       <workItem from="1582376085628" duration="3333000" />
       <workItem from="1583511127011" duration="1008000" />
+      <workItem from="1592496439002" duration="1246000" />
     </task>
     <task id="LOCAL-00001" summary="添加项目描述">
       <created>1581907152333</created>
@@ -93,7 +106,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581907742878</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="添加项目描述">
+      <created>1592496513808</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1592496513808</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -127,14 +147,18 @@
     <option name="LAST_COMMIT_MESSAGE" value="添加项目描述" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="572" y="118" key="CommitChangelistDialog2" timestamp="1592496473360">
+    <state x="572" y="118" key="CommitChangelistDialog2" timestamp="1592496513227">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="572" y="118" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1592496473360" />
+    <state x="572" y="118" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1592496513227" />
     <state x="669" y="237" key="MultipleFileMergeDialog" timestamp="1592496490519">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="669" y="237" key="MultipleFileMergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1592496490519" />
+    <state x="552" y="256" key="Vcs.Push.Dialog.v2" timestamp="1592496522036">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="256" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1592496522036" />
     <state x="754" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1592496477539">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
